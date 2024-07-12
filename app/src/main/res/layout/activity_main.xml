@@ -7,20 +7,49 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+    <LinearLayout
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_gradient"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <ImageView
+        android:layout_width="573dp"
+        android:layout_height="137dp"
+        android:layout_marginBottom="100dp"
+        android:src="@drawable/sonnow_logo"
+        app:layout_constraintBottom_toTopOf="@+id/edit_text_username"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/sonnow_logo"
+        />
+
     <EditText
         android:id="@+id/edit_text_username"
         style="@style/EditTextStyle"
+        android:autofillHints=""
+        android:background="@drawable/field_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.371" />
+        app:layout_constraintVertical_bias="0.371"
+        android:inputType="textPersonName"
+        android:labelFor="@id/edit_text_username"
+        android:textColor="@color/white"
+        />
 
     <EditText
         android:id="@+id/edit_text_password"
         style="@style/EditTextStyle"
         android:layout_marginTop="36dp"
+        android:autofillHints=""
+        android:background="@drawable/field_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +61,10 @@
         android:id="@+id/my_button"
         android:layout_width="110dp"
         android:layout_height="69dp"
-        android:text="Submit"
+        android:text="@string/submit_btn_text"
+        android:background="@drawable/button"
+        android:layout_marginTop="36dp"
+        app:backgroundTint="@color/fieldBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.499"

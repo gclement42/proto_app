@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">lunabee_proto</string>
-    <string name="greeting">Hello %1$s!</string>
+    <string name="submit_btn_text">Submit</string>
+    <string name="sonnow_logo">Sonnow logo</string>">
 </resources>
