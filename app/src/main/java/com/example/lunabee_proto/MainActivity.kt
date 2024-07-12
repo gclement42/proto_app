@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             Log.d("MainActivity", "Username or password is empty")
         }
         else {
-            val intent = Intent(this, Home::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
 

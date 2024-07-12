@@ -5,21 +5,22 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Home">
+    tools:context=".HomeActivity">
 
-    <include layout="@layout/header" />
+    <include
+        android:id="@+id/header"
+        layout="@layout/header" />
 
-    <LinearLayout
-        android:id="@+id/album_container"
-        android:layout_width="675dp"
-        android:layout_height="299dp"
-        android:layout_marginTop="128dp"
-        android:orientation="vertical"
-        android:padding="16dp"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="441dp"
+        android:layout_height="313dp"
+        android:layout_marginTop="202dp"
+        android:clipToPadding="false"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </LinearLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

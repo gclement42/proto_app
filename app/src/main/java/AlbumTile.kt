@@ -15,9 +15,8 @@ class AlbumTile @JvmOverloads constructor(
     private val imageView: ImageView = ImageView(context)
 
     init {
-        layoutParams = LayoutParams(200, 200)
         radius = 16f  // Rayon des coins du CardView
-        imageView.layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
+        imageView.layoutParams = LayoutParams(450, 450)
         imageView.scaleType = ImageView.ScaleType.CENTER_CROP
         imageView.setImageResource(R.drawable.lafeve_24)
         addView(imageView)
