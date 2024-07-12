@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">lunabee_proto</string>
     <string name="submit_btn_text">Submit</string>
-    <string name="sonnow_logo">Sonnow logo</string>">
+    <string name="sonnow_logo">Sonnow logo</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="user_avatar">user avatar</string>
 </resources>
