@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#747574</color>
     <color name="fieldBackground">#260124</color>
+    <color name="searchBackground">#f0d3ee</color>
 </resources>
