@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="EditTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:hint">Enter text</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:background">@drawable/border</item>
+        <item name="android:width">250dp</item>
+
+    </style>
+</resources>

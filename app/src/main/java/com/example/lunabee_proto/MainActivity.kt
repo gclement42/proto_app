@@ -11,17 +11,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-
-        val myBtn: Button = findViewById(R.id.my_button)
-        val myTextView: TextView = findViewById(R.id.my_textview)
-
-        var name = "Clement"
-        var greeting = getString(R.string.greeting, name)
-        myTextView.text = greeting
-        myBtn.setOnClickListener {
-            name = "Salome"
-            greeting = getString(R.string.greeting, name)
-            myTextView.text = greeting
-        }
     }
 }
