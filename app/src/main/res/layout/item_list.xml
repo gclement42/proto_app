@@ -9,11 +9,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="998dp"
         android:layout_height="83dp"
-        android:layout_marginStart="75dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="150dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.179"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
