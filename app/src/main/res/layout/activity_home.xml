@@ -13,9 +13,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/carouselRecyclerView"
-        android:layout_width="1523dp"
-        android:layout_height="573dp"
-        android:layout_marginBottom="60dp"
+        android:layout_width="1505dp"
+        android:layout_height="312dp"
+        android:layout_marginBottom="228dp"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:orientation="horizontal"
