@@ -1,8 +1,8 @@
 package com.example.lunabee_proto
 
+import AlbumData
 import AlbumTileAdapter
 import ListAdapter
-import MarginPageTransformer
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -28,7 +28,14 @@ class HomeActivity : AppCompatActivity() {
         }
         setupCarousel()
         val listRecyclerView = findViewById<RecyclerView>(R.id.listRecyclerView)
-        val items = listOf("Item 1", "Item 2", "Item 3", "Item 4")
+        val items = listOf(
+            AlbumData("24", "La Feve", 2023, R.drawable.lafeve_24),
+            AlbumData("24", "La Feve", 2023, R.drawable.lafeve_24),
+            AlbumData("24", "La Feve", 2023, R.drawable.lafeve_24),
+            AlbumData("24", "La Feve", 2023, R.drawable.lafeve_24),
+            AlbumData("24", "La Feve", 2023, R.drawable.lafeve_24),
+            AlbumData("24", "La Feve", 2023, R.drawable.lafeve_24),
+        )
 
         listRecyclerView.layoutManager = LinearLayoutManager(this)
         listRecyclerView.adapter = ListAdapter(items)
