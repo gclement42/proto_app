@@ -39,6 +39,11 @@ class HomeActivity : AppCompatActivity() {
             R.drawable.lafeve_24,
             R.drawable.lafeve_24,
             R.drawable.lafeve_24,
+            R.drawable.lafeve_24,
+            R.drawable.lafeve_24,
+            R.drawable.lafeve_24,
+            R.drawable.lafeve_24,
+            R.drawable.lafeve_24,
         )
     }
 }
