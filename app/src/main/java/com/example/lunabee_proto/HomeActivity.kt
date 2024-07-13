@@ -7,9 +7,14 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
+import com.google.android.material.carousel.CarouselSnapHelper
 
 class HomeActivity : AppCompatActivity() {
+
+    private lateinit var carouselRecyclerView: RecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -19,8 +24,21 @@ class HomeActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val viewPager: ViewPager = findViewById(R.id.view_pager)
-        viewPager.adapter = AlbumTileAdapter(this)
-        viewPager.setPageTransformer(false, MarginPageTransformer(1))
+        setupCarousel()
+    }
+
+    private  fun setupCarousel() {
+        carouselRecyclerView = findViewById(R.id.carouselRecyclerView)
+        CarouselSnapHelper().attachToRecyclerView(carouselRecyclerView)
+        carouselRecyclerView.adapter = AlbumTileAdapter(getImages())
+    }
+
+    private fun getImages(): List<Int> {
+        return listOf(
+            R.drawable.lafeve_24,
+            R.drawable.lafeve_24,
+            R.drawable.lafeve_24,
+            R.drawable.lafeve_24,
+        )
     }
 }
