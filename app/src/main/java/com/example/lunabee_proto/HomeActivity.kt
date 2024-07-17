@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.carousel.CarouselSnapHelper
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity() {
 
     private lateinit var carouselRecyclerView: RecyclerView
 
@@ -26,6 +26,7 @@ class HomeActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        setupAvatarClick()
         setupCarousel()
         val listRecyclerView = findViewById<RecyclerView>(R.id.listRecyclerView)
         val items = listOf(
