@@ -1,5 +1,6 @@
 package com.example.myapp
 
+import AlbumData
 import android.content.Context
 import android.util.AttributeSet
 import androidx.cardview.widget.CardView
@@ -13,6 +14,7 @@ class AlbumTile @JvmOverloads constructor(
 ) : CardView(context, attrs, defStyleAttr) {
 
     private val imageView: ImageView = ImageView(context)
+    private var data: AlbumData? = null
 
     init {
         radius = 16f
@@ -23,5 +25,10 @@ class AlbumTile @JvmOverloads constructor(
 
     fun setImageResource(resId: Int) {
         imageView.setImageResource(resId)
+    }
+
+    fun setData(data: AlbumData) {
+        this.data = data
+        imageView.setImageResource(data.getImage())
     }
 }

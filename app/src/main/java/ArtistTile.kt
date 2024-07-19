@@ -1,5 +1,6 @@
 package com.example.myapp
 
+import ArtistData
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.ImageView
@@ -15,12 +16,18 @@ class ArtistTile @JvmOverloads constructor(
 ) : CardView(context, attrs, defStyleAttr) {
 
     private val imageView: ImageView = ImageView(context)
+    private var data: ArtistData? = null
 
     init {
         radius = 100f
         imageView.scaleType = ImageView.ScaleType.CENTER_CROP
         imageView.setImageResource(R.drawable.la_feve)
         addView(imageView)
+    }
+
+    fun setData(data: ArtistData) {
+        this.data = data
+        imageView.setImageResource(data.getImage())
     }
 
     fun setImageResource(resId: Int) {
