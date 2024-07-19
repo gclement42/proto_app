@@ -2,9 +2,11 @@ package com.example.myapp
 
 import AlbumData
 import android.content.Context
+import android.content.Intent
 import android.util.AttributeSet
 import androidx.cardview.widget.CardView
 import android.widget.ImageView
+import com.example.lunabee_proto.AlbumActivity
 import com.example.lunabee_proto.R
 
 class AlbumTile @JvmOverloads constructor(
@@ -14,7 +16,7 @@ class AlbumTile @JvmOverloads constructor(
 ) : CardView(context, attrs, defStyleAttr) {
 
     private val imageView: ImageView = ImageView(context)
-    private var data: AlbumData? = null
+    private var data: AlbumData = AlbumData("24", "La Feve", 2023, R.drawable.lafeve_24)
 
     init {
         radius = 16f
@@ -30,5 +32,14 @@ class AlbumTile @JvmOverloads constructor(
     fun setData(data: AlbumData) {
         this.data = data
         imageView.setImageResource(data.getImage())
+        imageView.setOnClickListener {
+            val intent = Intent(context, AlbumActivity::class.java).apply {
+                putExtra("ALBUM_TITLE", data.getName())
+                putExtra("ALBUM_ARTIST", data.getArtist())
+                putExtra("ALBUM_YEAR", data.getYear())
+                putExtra("ALBUM_COVER", data.getImage())
+            }
+            context.startActivity(intent)
+        }
     }
 }

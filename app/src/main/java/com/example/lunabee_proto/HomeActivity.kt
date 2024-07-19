@@ -29,38 +29,25 @@ class HomeActivity : BaseActivity() {
         setupAvatarClick()
         setupCarousel()
         val listRecyclerView = findViewById<RecyclerView>(R.id.listRecyclerView)
-        val items = listOf(
-            AlbumData("24", "La Feve", 2023, R.drawable.lafeve_24),
-            AlbumData("24", "La Feve", 2023, R.drawable.lafeve_24),
-            AlbumData("24", "La Feve", 2023, R.drawable.lafeve_24),
-            AlbumData("24", "La Feve", 2023, R.drawable.lafeve_24),
-            AlbumData("24", "La Feve", 2023, R.drawable.lafeve_24),
-            AlbumData("24", "La Feve", 2023, R.drawable.lafeve_24),
-        )
-
         listRecyclerView.layoutManager = LinearLayoutManager(this)
-        listRecyclerView.adapter = ListAdapter(items)
-
-        val carouselRecyclerView = findViewById<RecyclerView>(R.id.carouselRecyclerView)
+        listRecyclerView.adapter = ListAdapter(getAlbums())
     }
 
     private  fun setupCarousel() {
         carouselRecyclerView = findViewById(R.id.carouselRecyclerView)
         CarouselSnapHelper().attachToRecyclerView(carouselRecyclerView)
-        carouselRecyclerView.adapter = AlbumTileAdapter(getImages())
+        carouselRecyclerView.adapter = AlbumTileAdapter(getAlbums())
     }
 
-    private fun getImages(): List<Int> {
+    private fun getAlbums(): List<AlbumData> {
         return listOf(
-            R.drawable.lafeve_24,
-            R.drawable.lafeve_24,
-            R.drawable.lafeve_24,
-            R.drawable.lafeve_24,
-            R.drawable.lafeve_24,
-            R.drawable.lafeve_24,
-            R.drawable.lafeve_24,
-            R.drawable.lafeve_24,
-            R.drawable.lafeve_24,
+            AlbumData("24", "La Feve", 2023, R.drawable.lafeve_24),
+            AlbumData("E-trap", "TH", 2024, R.drawable.th_etrap),
+            AlbumData("Malcolm", "Zed", 2024, R.drawable.zed_malcolm),
+            AlbumData("Recherche & Destruction", "Jolagreen23", 2023, R.drawable.jolagreen23_rd),
+            AlbumData("Bitume Caviar (Vol 1)", "Isha & Limsa d'Aulnay", 2023, R.drawable.isha_limsa_bitume_caviar),
+            AlbumData("Saudade", "Green Montana", 2024, R.drawable.green_montana_saudade),
+            AlbumData("Saudade", "Green Montana", 2024, R.drawable.green_montana_saudade)
         )
     }
 }

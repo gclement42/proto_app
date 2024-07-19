@@ -1,14 +1,16 @@
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.PagerAdapter
+import com.example.lunabee_proto.AlbumActivity
 import com.example.lunabee_proto.R
 import com.example.myapp.AlbumTile
 
-class AlbumTileAdapter(private val images: List<Int>):
+class AlbumTileAdapter(private val albums: List<AlbumData>):
     RecyclerView.Adapter<AlbumTileAdapter.CarouselViewHolder>() {
 
 
@@ -31,10 +33,19 @@ class AlbumTileAdapter(private val images: List<Int>):
     }
 
     override fun onBindViewHolder(holder: AlbumTileAdapter.CarouselViewHolder, position: Int) {
-        holder.bind(images[position])
+        holder.bind(albums[position].getImage())
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, AlbumActivity::class.java).apply {
+                putExtra("ALBUM_TITLE", albums[position].getName())
+                putExtra("ALBUM_ARTIST", albums[position].getArtist())
+                putExtra("ALBUM_YEAR", albums[position].getYear())
+                putExtra("ALBUM_COVER", albums[position].getImage())
+            }
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
-        return images.size
+        return albums.size
     }
 }

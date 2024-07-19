@@ -1,11 +1,14 @@
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.lunabee_proto.AlbumActivity
 import com.example.lunabee_proto.R
 
-class ListAdapter(private val albums: List<AlbumData>) : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
+class ListAdapter(private val albums: List<AlbumData>):
+    RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name: TextView = itemView.findViewById(R.id.itemTitle)
@@ -20,6 +23,15 @@ class ListAdapter(private val albums: List<AlbumData>) : RecyclerView.Adapter<Li
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.name.text = albums[position].getName()
         holder.artist.text = albums[position].getArtist()
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, AlbumActivity::class.java).apply {
+                putExtra("ALBUM_TITLE", albums[position].getName())
+                putExtra("ALBUM_ARTIST", albums[position].getArtist())
+                putExtra("ALBUM_YEAR", albums[position].getYear())
+                putExtra("ALBUM_COVER", albums[position].getImage())
+            }
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int = albums.size
