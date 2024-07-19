@@ -7,4 +7,6 @@
     <string name="user_avatar">user avatar</string>
     <string name="search">Search</string>
     <string name="username">Herrrmann</string>
+    <string name="favorite_albums_text">Favorite Albums</string>
+    <string name="favorite_artists">Favorite Artists</string>
 </resources>

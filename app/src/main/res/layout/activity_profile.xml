@@ -54,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="40dp"
             android:layout_toEndOf="@+id/cardview"
             android:fontFamily="@font/almarai_bold"
             android:text="@string/username"
@@ -66,39 +66,132 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/username"
-            android:layout_toEndOf="@+id/cardview"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:layout_toEndOf="@+id/cardview"
+            android:fontFamily="@font/almarai"
             android:text="0 Abonnés"
-            android:textSize="25sp"
             android:textColor="#000000"
-            android:fontFamily="@font/almarai"/>
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/subscriptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/subscribers"
-            android:layout_toEndOf="@+id/cardview"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:layout_toEndOf="@+id/cardview"
+            android:fontFamily="@font/almarai"
             android:text="100 abonnements"
-            android:textSize="25sp"
             android:textColor="#000000"
-            android:fontFamily="@font/almarai"/>
+            android:textSize="15sp" />
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:id="@+id/favorite_albums"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profile_layout">
 
-        <com.example.myapp.AlbumTile
+        <TextView
+            android:id="@+id/favorite_albums_text"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:fontFamily="@font/almarai_bold"
+            android:text="@string/favorite_albums_text"
+            android:textColor="#000000"
+            android:textSize="25sp" />
+
+        <com.example.myapp.AlbumTile
+            android:id="@+id/album_tile_2"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:layout_below="@id/favorite_albums_text"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="0dp"
+            android:layout_toStartOf="@id/album_tile_1" />
+
+        <com.example.myapp.AlbumTile
+            android:id="@+id/album_tile_1"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_below="@id/favorite_albums_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp" />
+
+        <com.example.myapp.AlbumTile
+            android:id="@+id/album_tile_3"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:layout_below="@id/favorite_albums_text"
+            android:layout_centerHorizontal="false"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="40dp"
+            android:layout_toEndOf="@+id/album_tile_1" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/favorite_artists"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/favorite_albums">
+
+        <TextView
+            android:id="@+id/favorite_artists_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:fontFamily="@font/almarai_bold"
+            android:text="@string/favorite_artists"
+            android:textColor="#000000"
+            android:textSize="25sp" />
+
+        <com.example.myapp.ArtistTile
+            android:id="@+id/artist_tile_2"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:layout_below="@id/favorite_artists_text"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="0dp"
+            android:layout_toStartOf="@id/artist_tile_1"
+            />
+
+        <com.example.myapp.ArtistTile
+            android:id="@+id/artist_tile_1"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_below="@id/favorite_artists_text"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="0dp"
+            />
+
+        <com.example.myapp.ArtistTile
+            android:id="@+id/artist_tile_3"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:layout_below="@id/favorite_artists_text"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="0dp"
+            android:layout_toEndOf="@id/artist_tile_1"
+            />
+
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
