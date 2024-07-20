@@ -1,0 +1,44 @@
+[
+  {
+    "title": "24",
+    "artist": "La Feve",
+    "year": 2023,
+    "cover": "lafeve_24",
+    "tracklist": ["Track 1", "Track 2", "Track 3", "Track 4", "Track 5"]
+  },
+  {
+    "title": "E-trap",
+    "artist": "TH",
+    "year": 2024,
+    "cover": "th_etrap",
+    "tracklist": ["Track 1", "Track 2", "Track 3", "Track 4", "Track 5"]
+  },
+  {
+    "title": "Malcolm",
+    "artist": "Zed",
+    "year": 2024,
+    "cover": "zed_malcolm",
+    "tracklist": ["Track 1", "Track 2", "Track 3", "Track 4", "Track 5"]
+  },
+  {
+    "title": "Recherche & Destruction",
+    "artist": "Jolagreen23",
+    "year": 2023,
+    "cover": "jolagreen23_rd",
+    "tracklist": ["Track 1", "Track 2", "Track 3", "Track 4", "Track 5"]
+  },
+  {
+    "title": "Bitume Caviar (Vol 1)",
+    "artist": "Isha & Limsa d'Aulnay",
+    "year": 2023,
+    "cover": "isha_limsa_bitume_caviar",
+    "tracklist": ["Track 1", "Track 2", "Track 3", "Track 4", "Track 5"]
+  },
+  {
+    "title": "Saudade",
+    "artist": "Green Montana",
+    "year": 2024,
+    "cover": "green_montana_saudade",
+    "tracklist": ["Track 1", "Track 2", "Track 3", "Track 4", "Track 5"]
+  }
+]

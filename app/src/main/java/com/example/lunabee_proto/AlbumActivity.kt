@@ -28,7 +28,6 @@ class AlbumActivity : BaseActivity() {
         findViewById<TextView>(R.id.album_title).text = albumTitle
         findViewById<TextView>(R.id.album_artist).text = albumArtist
         findViewById<TextView>(R.id.album_year).text = albumYear.toString()
-        findViewById<ImageView>(R.id.album_cover).setImageResource(albumCover)
         setTracklist(getTracklist())
     }
 

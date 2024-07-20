@@ -1,9 +1,9 @@
 package com.example.lunabee_proto
 
-import AlbumData
 import AlbumTileAdapter
 import ListAdapter
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.carousel.CarouselSnapHelper
+import com.google.firebase.crashlytics.buildtools.reloc.com.google.common.reflect.TypeToken
+import com.google.gson.Gson
+import java.io.InputStreamReader
 
 class HomeActivity : BaseActivity() {
 
@@ -40,14 +43,9 @@ class HomeActivity : BaseActivity() {
     }
 
     private fun getAlbums(): List<AlbumData> {
-        return listOf(
-            AlbumData("24", "La Feve", 2023, R.drawable.lafeve_24),
-            AlbumData("E-trap", "TH", 2024, R.drawable.th_etrap),
-            AlbumData("Malcolm", "Zed", 2024, R.drawable.zed_malcolm),
-            AlbumData("Recherche & Destruction", "Jolagreen23", 2023, R.drawable.jolagreen23_rd),
-            AlbumData("Bitume Caviar (Vol 1)", "Isha & Limsa d'Aulnay", 2023, R.drawable.isha_limsa_bitume_caviar),
-            AlbumData("Saudade", "Green Montana", 2024, R.drawable.green_montana_saudade),
-            AlbumData("Saudade", "Green Montana", 2024, R.drawable.green_montana_saudade)
-        )
+        val inputStream = resources.openRawResource(R.raw.albums)
+        val reader = InputStreamReader(inputStream)
+        val albumType = object : TypeToken<List<AlbumData>>() {}.type
+        return Gson().fromJson(reader, albumType)
     }
 }

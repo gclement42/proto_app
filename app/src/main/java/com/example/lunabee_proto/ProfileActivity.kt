@@ -1,6 +1,5 @@
 package com.example.lunabee_proto
 
-import AlbumData
 import ArtistData
 import android.content.Intent
 import android.os.Bundle
@@ -12,9 +11,9 @@ import com.example.myapp.AlbumTile
 import com.example.myapp.ArtistTile
 
 val favorite_albums = listOf(
-    AlbumData("24", "La Feve", 2023, R.drawable.lafeve_24),
-    AlbumData("Malcolm", "Zed", 2024, R.drawable.zed_malcolm),
-    AlbumData("E-trap", "TH", 2024, R.drawable.th_etrap)
+    AlbumData("24", "La Feve", 2023, "lafeve_24", listOf("Track 1", "Track 2", "Track 3")),
+    AlbumData("Malcolm", "Zed", 2024, "zed_malcolm", listOf("Track 1", "Track 2", "Track 3")),
+    AlbumData("E-trap", "TH", 2024, "th_etrap", listOf("Track 1", "Track 2", "Track 3"))
 )
 
 val favorite_artists = listOf(

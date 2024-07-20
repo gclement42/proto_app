@@ -6,6 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lunabee_proto.AlbumActivity
+import com.example.lunabee_proto.AlbumData
 import com.example.lunabee_proto.R
 
 class ListAdapter(private val albums: List<AlbumData>):
@@ -23,15 +24,17 @@ class ListAdapter(private val albums: List<AlbumData>):
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.name.text = albums[position].getName()
-        holder.artist.text = albums[position].getArtist()
-        holder.cover.setImageResource(albums[position].getImage())
+        holder.name.text = albums[position].title
+        holder.artist.text = albums[position].artist
+        holder.cover.setImageResource(
+            holder.itemView.context.resources.getIdentifier(
+                albums[position].cover, "drawable", holder.itemView.context.packageName))
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, AlbumActivity::class.java).apply {
-                putExtra("ALBUM_TITLE", albums[position].getName())
-                putExtra("ALBUM_ARTIST", albums[position].getArtist())
-                putExtra("ALBUM_YEAR", albums[position].getYear())
-                putExtra("ALBUM_COVER", albums[position].getImage())
+                putExtra("ALBUM_TITLE", albums[position].title)
+                putExtra("ALBUM_ARTIST", albums[position].artist)
+                putExtra("ALBUM_YEAR", albums[position].year)
+                putExtra("ALBUM_COVER", albums[position].cover)
             }
             holder.itemView.context.startActivity(intent)
         }
