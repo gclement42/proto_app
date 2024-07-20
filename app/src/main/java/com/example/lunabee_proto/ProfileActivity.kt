@@ -44,7 +44,6 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun setFavoriteArtists(artists: List<ArtistData>) {
         try {
-            Log.d("ProfileActivity", "artists: $artists")
             val artistTileIds = arrayOf(
                 R.id.artist_tile_1,
                 R.id.artist_tile_2,
@@ -53,7 +52,6 @@ class ProfileActivity : AppCompatActivity() {
             for ((i, id) in artistTileIds.withIndex()) {
                 val artist = artists.getOrNull(i)
                 if (artist != null) {
-                    Log.d("ProfileActivity", "artist[$i]: ${artist.name}")
                     val view = findViewById<ArtistTile>(id)
                     view.setData(artist)
                 } else {

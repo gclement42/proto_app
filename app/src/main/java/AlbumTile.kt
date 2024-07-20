@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.util.AttributeSet
 import android.util.Log
+import android.widget.FrameLayout
 import androidx.cardview.widget.CardView
 import android.widget.ImageView
 import com.example.lunabee_proto.AlbumActivity
@@ -14,13 +15,12 @@ class AlbumTile @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : CardView(context, attrs, defStyleAttr) {
+) : FrameLayout(context, attrs, defStyleAttr) {
 
     private val imageView: ImageView = ImageView(context)
     private lateinit var data: AlbumData
 
     init {
-        radius = 16f
         imageView.scaleType = ImageView.ScaleType.CENTER_CROP
         imageView.setImageResource(R.drawable.lafeve_24)
         addView(imageView)

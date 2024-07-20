@@ -2,16 +2,49 @@
   {
     "name": "La Feve",
     "image": "la_feve",
-    "followers": 200
+    "followers": 200,
+    "top_songs": [
+      "Song 1",
+      "Song 2",
+      "Song 3",
+      "Song 4",
+      "Song 5"
+    ],
+    "albums": [
+      "Album 1",
+      "Album 2"
+    ]
   },
   {
     "name": "Mairo",
     "image": "mairo",
-    "followers": 100
+    "followers": 100,
+    "top_songs": [
+      "Song A",
+      "Song B",
+      "Song C",
+      "Song D",
+      "Song E"
+    ],
+    "albums": [
+      "Album A",
+      "Album B"
+    ]
   },
   {
     "name": "Kekra",
     "image": "kekra",
-    "followers": 50
+    "followers": 50,
+    "top_songs": [
+      "Track 1",
+      "Track 2",
+      "Track 3",
+      "Track 4",
+      "Track 5"
+    ],
+    "albums": [
+      "Album X",
+      "Album Y"
+    ]
   }
 ]

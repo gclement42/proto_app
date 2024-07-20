@@ -10,24 +10,25 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import com.example.lunabee_proto.AlbumActivity
-import com.google.android.material.imageview.ShapeableImageView
-import com.google.android.material.shape.CornerFamily
+import com.example.lunabee_proto.ArtistActivity
 import com.example.lunabee_proto.R
 
 class ArtistTile @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr) {
+) : CardView(context, attrs, defStyleAttr) {
 
     private val imageView: ImageView
     private val nameTextView: TextView
     private val followersTextView: TextView
 
     init {
+        radius = 150f
+
         LayoutInflater.from(context).inflate(R.layout.artist_tile, this, true)
-        imageView = findViewById(R.id.artist_image) ?: throw IllegalArgumentException("ImageView not found")
+        imageView = findViewById(R.id.artist_image) ?: throw IllegalArgumentException("ImageView for artist image not found")
         nameTextView = findViewById(R.id.artist_name) ?: throw IllegalArgumentException("TextView for artist name not found")
         followersTextView = findViewById(R.id.artist_followers) ?: throw IllegalArgumentException("TextView for artist followers not found")
+        imageView.scaleType = ImageView.ScaleType.CENTER_CROP
     }
 
     fun setData(artist: ArtistData) {
@@ -44,6 +45,13 @@ class ArtistTile @JvmOverloads constructor(
             }
         } catch (e: Exception) {
             Log.e("ArtistTile", "Error setting data", e)
+        }
+        imageView.setOnClickListener {
+            Log.d("ArtistTile", "Artist image clicked")
+            val intent = Intent(context, ArtistActivity::class.java).apply {
+                putExtra("ARTIST_NAME", artist.name)
+            }
+            context.startActivity(intent)
         }
     }
 }
