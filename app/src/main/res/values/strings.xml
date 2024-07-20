@@ -13,4 +13,5 @@
     <string name="artist_name">La feve</string>
     <string name="artist_image">Artist image</string>
     <string name="release">Release</string>
+    <string name="most_popular">Most Popular</string>
 </resources>
