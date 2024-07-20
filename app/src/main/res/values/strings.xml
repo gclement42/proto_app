@@ -12,4 +12,5 @@
     <string name="album_cover">album cover</string>
     <string name="artist_name">La feve</string>
     <string name="artist_image">Artist image</string>
+    <string name="release">Release</string>
 </resources>
