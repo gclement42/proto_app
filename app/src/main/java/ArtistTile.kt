@@ -35,7 +35,6 @@ class ArtistTile @JvmOverloads constructor(
         try {
             nameTextView.text = artist.name
             followersTextView.text = artist.followers.toString()
-            Log.d("ArtistTile", "Data set for artist: ${artist.image}")
             val resId = context.resources.getIdentifier(artist.image, "drawable", context.packageName)
             if (resId != 0) {
                 imageView.setImageResource(resId)
@@ -47,9 +46,13 @@ class ArtistTile @JvmOverloads constructor(
             Log.e("ArtistTile", "Error setting data", e)
         }
         imageView.setOnClickListener {
-            Log.d("ArtistTile", "Artist image clicked")
+            Log.d("ArtistTile", "Artist image clicked ${ArrayList(artist.topSongs)}")
             val intent = Intent(context, ArtistActivity::class.java).apply {
                 putExtra("ARTIST_NAME", artist.name)
+                putExtra("ARTIST_IMAGE", artist.image)
+                putExtra("ARTIST_FOLLOWERS", artist.followers)
+                putStringArrayListExtra("ARTIST_TOP_SONGS", ArrayList(artist.topSongs))
+                putStringArrayListExtra("ARTIST_ALBUMS", ArrayList(artist.albums))
             }
             context.startActivity(intent)
         }

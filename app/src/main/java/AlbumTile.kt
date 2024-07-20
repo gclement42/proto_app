@@ -39,6 +39,7 @@ class AlbumTile @JvmOverloads constructor(
                 putExtra("ALBUM_ARTIST", data.artist)
                 putExtra("ALBUM_YEAR", data.year)
                 putExtra("ALBUM_COVER", data.cover)
+                putStringArrayListExtra("ALBUM_TRACKLIST", ArrayList(data.tracklist))
             }
             context.startActivity(intent)
         }

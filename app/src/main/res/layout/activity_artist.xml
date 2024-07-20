@@ -63,7 +63,7 @@
         </LinearLayout>
 
         <ListView
-            android:id="@+id/album_tracklist"
+            android:id="@+id/artist_top_songs"
             android:layout_width="match_parent"
             android:layout_height="323dp"
             app:layout_constraintBottom_toBottomOf="parent"

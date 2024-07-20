@@ -3,7 +3,9 @@ package com.example.lunabee_proto
 import AlbumTileAdapter
 import ListAdapter
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.ListView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -29,8 +31,21 @@ class ArtistActivity : BaseActivity() {
             insets
         }
         val artistName = intent.getStringExtra("ARTIST_NAME")
+        val artistImage = intent.getStringExtra("ARTIST_IMAGE")
+        val artistFollowers = intent.getIntExtra("ARTIST_FOLLOWERS", -1)
+        findViewById<TextView>(R.id.artist_name).text = artistName
+        findViewById<TextView>(R.id.artist_followers).text = artistFollowers.toString()
+        val artistImageId = resources.getIdentifier(artistImage, "drawable", packageName)
+        findViewById<ImageView>(R.id.artist_image).setImageResource(artistImageId)
         setupAvatarClick()
+        displayTopSongs(intent.getStringArrayListExtra("ARTIST_TOP_SONGS") ?: emptyList())
         setupCarousel()
+    }
+
+    private fun displayTopSongs(topSongs: List<String>) {
+        val tracklistView = findViewById<ListView>(R.id.artist_top_songs)
+        tracklistView.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, topSongs)
+
     }
 
     private  fun setupCarousel() {
