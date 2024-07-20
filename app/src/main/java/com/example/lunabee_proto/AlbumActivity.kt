@@ -6,7 +6,6 @@ import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
@@ -23,11 +22,13 @@ class AlbumActivity : BaseActivity() {
         val albumTitle = intent.getStringExtra("ALBUM_TITLE")
         val albumArtist = intent.getStringExtra("ALBUM_ARTIST")
         val albumYear = intent.getIntExtra("ALBUM_YEAR", -1)
-        val albumCover = intent.getIntExtra("ALBUM_COVER", -1)
+        val albumCover = intent.getStringExtra("ALBUM_COVER")
 
         findViewById<TextView>(R.id.album_title).text = albumTitle
         findViewById<TextView>(R.id.album_artist).text = albumArtist
         findViewById<TextView>(R.id.album_year).text = albumYear.toString()
+        val cover = findViewById<ImageView>(R.id.album_cover)
+        cover.setImageResource(cover.context.resources.getIdentifier(albumCover, "drawable", cover.context.packageName))
         setTracklist(getTracklist())
     }
 
