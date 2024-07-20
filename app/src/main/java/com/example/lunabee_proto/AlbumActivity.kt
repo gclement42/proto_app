@@ -1,14 +1,16 @@
 package com.example.lunabee_proto
 
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.ListView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class AlbumActivity : AppCompatActivity() {
+class AlbumActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -27,5 +29,18 @@ class AlbumActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.album_artist).text = albumArtist
         findViewById<TextView>(R.id.album_year).text = albumYear.toString()
         findViewById<ImageView>(R.id.album_cover).setImageResource(albumCover)
+        setTracklist(getTracklist())
+    }
+
+    private fun getTracklist(): List<String> {
+        return listOf(
+            "Track 1","Track 2","Track 3","Track 4","Track 5","Track 6", "Track 7"
+        )
+    }
+
+    fun setTracklist(tracklist: List<String>) {
+        val tracklistView = findViewById<ListView>(R.id.album_tracklist)
+        tracklistView.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, tracklist)
+
     }
 }
