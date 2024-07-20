@@ -9,9 +9,9 @@
 
     <include android:id="@+id/header" layout="@layout/header" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/album_header"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:orientation="vertical"
@@ -24,46 +24,65 @@
             android:id="@+id/album_cover"
             android:layout_width="150dp"
             android:layout_height="150dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="50dp"
             android:contentDescription="@string/album_cover"
             android:scaleType="centerCrop"
-            android:src="@drawable/lafeve_24" />
+            android:src="@drawable/lafeve_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
 
         <TextView
             android:id="@+id/album_title"
-            android:layout_width="match_parent"
-            android:layout_height="28dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
             android:gravity="center"
             android:padding="16dp"
+            android:text="24"
             android:textColor="@android:color/black"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@id/album_cover"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/album_artist"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
             android:gravity="center"
             android:padding="8dp"
+            android:text="La Feve"
             android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@id/album_cover"
+            app:layout_constraintTop_toBottomOf="@id/album_title" />
 
         <TextView
             android:id="@+id/album_year"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
             android:gravity="center"
             android:padding="8dp"
+            android:text="2023"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@id/album_cover"
+            app:layout_constraintTop_toBottomOf="@id/album_artist" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ListView
         android:id="@+id/album_tracklist"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/album_header"
+        android:layout_marginTop="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/album_header" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

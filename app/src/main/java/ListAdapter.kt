@@ -35,6 +35,7 @@ class ListAdapter(private val albums: List<AlbumData>):
                 putExtra("ALBUM_ARTIST", albums[position].artist)
                 putExtra("ALBUM_YEAR", albums[position].year)
                 putExtra("ALBUM_COVER", albums[position].cover)
+                putStringArrayListExtra("ALBUM_TRACKLIST", ArrayList(albums[position].tracklist))
             }
             holder.itemView.context.startActivity(intent)
         }

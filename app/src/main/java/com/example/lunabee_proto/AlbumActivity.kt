@@ -23,22 +23,17 @@ class AlbumActivity : BaseActivity() {
         val albumArtist = intent.getStringExtra("ALBUM_ARTIST")
         val albumYear = intent.getIntExtra("ALBUM_YEAR", -1)
         val albumCover = intent.getStringExtra("ALBUM_COVER")
+        var albumTracklist = intent.getStringArrayListExtra("ALBUM_TRACKLIST")
 
         findViewById<TextView>(R.id.album_title).text = albumTitle
         findViewById<TextView>(R.id.album_artist).text = albumArtist
         findViewById<TextView>(R.id.album_year).text = albumYear.toString()
         val cover = findViewById<ImageView>(R.id.album_cover)
         cover.setImageResource(cover.context.resources.getIdentifier(albumCover, "drawable", cover.context.packageName))
-        setTracklist(getTracklist())
+        albumTracklist?.let { setTracklist(it.toList()) }
     }
 
-    private fun getTracklist(): List<String> {
-        return listOf(
-            "Track 1","Track 2","Track 3","Track 4","Track 5","Track 6", "Track 7"
-        )
-    }
-
-    fun setTracklist(tracklist: List<String>) {
+    private fun setTracklist(tracklist: List<String>) {
         val tracklistView = findViewById<ListView>(R.id.album_tracklist)
         tracklistView.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, tracklist)
 
