@@ -1,28 +1,20 @@
 package com.example.lunabee_proto
 
 import ArtistData
-import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.myapp.AlbumTile
 import com.example.myapp.ArtistTile
-
-val favorite_albums = listOf(
-    AlbumData("24", "La Feve", 2023, "lafeve_24", listOf("Track 1", "Track 2", "Track 3")),
-    AlbumData("Malcolm", "Zed", 2024, "zed_malcolm", listOf("Track 1", "Track 2", "Track 3")),
-    AlbumData("E-trap", "TH", 2024, "th_etrap", listOf("Track 1", "Track 2", "Track 3"))
-)
-
-val favorite_artists = listOf(
-    ArtistData("La Feve", R.drawable.la_feve, 200),
-    ArtistData("Mairo", R.drawable.mairo, 100),
-    ArtistData("Kekra", R.drawable.kekra, 50)
-)
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import java.io.InputStreamReader
 
 class ProfileActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -32,10 +24,11 @@ class ProfileActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        setFavoriteAlbums(favorite_albums)
-        setFavoriteArtists(favorite_artists)
-    }
 
+        val favoriteArtists = getFavoriteArtists()
+        setFavoriteAlbums(getFavoriteAlbums())
+        setFavoriteArtists(favoriteArtists)
+    }
 
     private fun setFavoriteAlbums(albums: List<AlbumData>) {
         val albumTileIds = arrayOf(
@@ -50,14 +43,40 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun setFavoriteArtists(artists: List<ArtistData>) {
-        val artistTileIds = arrayOf(
-            R.id.artist_tile_1,
-            R.id.artist_tile_2,
-            R.id.artist_tile_3
-        )
-        for ((i, id) in artistTileIds.withIndex()) {
-            val view = findViewById<ArtistTile>(id)
-            view.setData(artists[i])
+        try {
+            Log.d("ProfileActivity", "artists: $artists")
+            val artistTileIds = arrayOf(
+                R.id.artist_tile_1,
+                R.id.artist_tile_2,
+                R.id.artist_tile_3
+            )
+            for ((i, id) in artistTileIds.withIndex()) {
+                val artist = artists.getOrNull(i)
+                if (artist != null) {
+                    Log.d("ProfileActivity", "artist[$i]: ${artist.name}")
+                    val view = findViewById<ArtistTile>(id)
+                    view.setData(artist)
+                } else {
+                    Log.e("ProfileActivity", "No artist data available for index $i")
+                }
+            }
+        } catch (e: Exception) {
+            Log.e("ProfileActivity", "Error setting favorite artists", e)
         }
+    }
+
+    private fun getFavoriteArtists(): List<ArtistData> {
+        val inputStream = resources.openRawResource(R.raw.artists)
+        val reader = InputStreamReader(inputStream)
+        val artistType = object : TypeToken<List<ArtistData>>() {}.type
+        return Gson().fromJson(reader, artistType)
+    }
+
+    private fun getFavoriteAlbums(): List<AlbumData> {
+        return listOf(
+            AlbumData("24", "La Feve", 2023, "lafeve_24", listOf("Track 1", "Track 2", "Track 3")),
+            AlbumData("Malcolm", "Zed", 2024, "zed_malcolm", listOf("Track 1", "Track 2", "Track 3")),
+            AlbumData("E-trap", "TH", 2024, "th_etrap", listOf("Track 1", "Track 2", "Track 3"))
+        )
     }
 }

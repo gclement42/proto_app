@@ -1,0 +1,17 @@
+[
+  {
+    "name": "La Feve",
+    "image": "la_feve",
+    "followers": 200
+  },
+  {
+    "name": "Mairo",
+    "image": "mairo",
+    "followers": 100
+  },
+  {
+    "name": "Kekra",
+    "image": "kekra",
+    "followers": 50
+  }
+]
