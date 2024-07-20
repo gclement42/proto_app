@@ -16,62 +16,97 @@
             android:id="@+id/header"
             layout="@layout/header" />
 
-        <LinearLayout
+        <FrameLayout
             android:id="@+id/artist_header"
             android:layout_width="match_parent"
-            android:layout_height="244dp"
+            android:layout_height="204dp"
             android:layout_marginTop="4dp"
-            android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/header">
 
-            <ImageView
-                android:id="@+id/artist_image"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/artist_cardview"
                 android:layout_width="match_parent"
-                android:layout_height="141dp"
-                android:layout_marginTop="25dp"
-                android:contentDescription="@string/artist_image"
-                android:src="@drawable/la_feve"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/artist_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/artist_image"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/la_feve" />
+
+                    <TextView
+                        android:id="@+id/artist_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginBottom="29dp"
+                        android:fontFamily="@font/almarai_bold"
+                        android:text="@string/artist_name"
+                        android:textColor="@android:color/white"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/artist_followers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginBottom="9dp"
+                        android:fontFamily="@font/almarai_light"
+                        android:text="100 followers"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/artist_name"
+                android:id="@+id/artist_top_songs_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
                 android:fontFamily="@font/almarai_bold"
-                android:text="@string/artist_name"
-                android:textSize="18sp" />
+                android:text="Most Popular"
+                android:textAlignment="viewStart"
+                android:textSize="25sp"
+                android:typeface="normal" />
 
-            <TextView
-                android:id="@+id/artist_followers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/almarai_light"
-                android:text="100 followers"
-                android:textSize="10sp"
+            <ListView
+                android:id="@+id/artist_top_songs"
+                android:layout_width="match_parent"
+                android:layout_height="323dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/artist_name" />
+                app:layout_constraintTop_toBottomOf="@id/artist_header"
+                app:layout_constraintVertical_bias="0.0" />
 
         </LinearLayout>
-
-        <ListView
-            android:id="@+id/artist_top_songs"
-            android:layout_width="match_parent"
-            android:layout_height="323dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/artist_header"
-            app:layout_constraintVertical_bias="0.0" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/artist_releases"

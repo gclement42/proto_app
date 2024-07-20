@@ -2,6 +2,7 @@ package com.example.lunabee_proto
 
 import AlbumTileAdapter
 import ListAdapter
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.ImageView
@@ -21,6 +22,7 @@ import java.io.InputStreamReader
 class ArtistActivity : BaseActivity() {
     private lateinit var carouselRecyclerView: RecyclerView
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -34,7 +36,7 @@ class ArtistActivity : BaseActivity() {
         val artistImage = intent.getStringExtra("ARTIST_IMAGE")
         val artistFollowers = intent.getIntExtra("ARTIST_FOLLOWERS", -1)
         findViewById<TextView>(R.id.artist_name).text = artistName
-        findViewById<TextView>(R.id.artist_followers).text = artistFollowers.toString()
+        findViewById<TextView>(R.id.artist_followers).text = artistFollowers.toString() + " followers"
         val artistImageId = resources.getIdentifier(artistImage, "drawable", packageName)
         findViewById<ImageView>(R.id.artist_image).setImageResource(artistImageId)
         setupAvatarClick()
