@@ -3,6 +3,7 @@ package com.example.lunabee_proto
 import AlbumTileAdapter
 import ListAdapter
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -31,6 +32,8 @@ class HomeActivity : BaseActivity() {
         val listRecyclerView = findViewById<RecyclerView>(R.id.listRecyclerView)
         listRecyclerView.layoutManager = LinearLayoutManager(this)
         listRecyclerView.adapter = ListAdapter(getAlbums())
+        listRecyclerView.isNestedScrollingEnabled = false
+        setRecyclerViewHeightBasedOnChildren(listRecyclerView)
     }
 
     private  fun setupCarousel() {
@@ -44,5 +47,21 @@ class HomeActivity : BaseActivity() {
         val reader = InputStreamReader(inputStream)
         val albumType = object : TypeToken<List<AlbumData>>() {}.type
         return Gson().fromJson(reader, albumType)
+    }
+
+    private fun setRecyclerViewHeightBasedOnChildren(recyclerView: RecyclerView) {
+        val adapter = recyclerView.adapter ?: return
+        var totalHeight = 0
+        val desiredWidth = View.MeasureSpec.makeMeasureSpec(recyclerView.width, View.MeasureSpec.UNSPECIFIED)
+
+        for (i in 0 until adapter.itemCount) {
+            val listItem = adapter.createViewHolder(recyclerView, adapter.getItemViewType(i)).itemView
+            listItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED)
+            totalHeight += listItem.measuredHeight
+        }
+
+        val params = recyclerView.layoutParams
+        params.height = totalHeight
+        recyclerView.layoutParams = params
     }
 }
