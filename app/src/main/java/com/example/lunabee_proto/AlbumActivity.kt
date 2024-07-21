@@ -2,7 +2,10 @@ package com.example.lunabee_proto
 
 import ArtistData
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
 import android.transition.Transition
 import android.util.Log
@@ -67,8 +70,7 @@ class AlbumActivity : BaseActivity() {
     }
 
     private fun setBackground(coverId: Int) {
-        val albumHeaderView = findViewById<View>(R.id.album_header)
-        val headerView = findViewById<View>(R.id.header)
+        val headerView = findViewById<View>(R.id.album_top)
 
         Glide.with(this)
             .asBitmap()
@@ -77,16 +79,34 @@ class AlbumActivity : BaseActivity() {
                 override fun onResourceReady(resource: Bitmap, transition: com.bumptech.glide.request.transition.Transition<in Bitmap>?) {
                     Palette.from(resource).generate { palette ->
                         val dominantColor = palette?.getDominantColor(ContextCompat.getColor(this@AlbumActivity, R.color.backgroundAlbum))
-                        headerView.setBackgroundColor(dominantColor ?: ContextCompat.getColor(this@AlbumActivity, R.color.backgroundAlbum))
-                        albumHeaderView.setBackgroundColor(dominantColor ?: ContextCompat.getColor(this@AlbumActivity, R.color.backgroundAlbum))
+                        val layerDrawable = ContextCompat.getDrawable(this@AlbumActivity, R.drawable.default_background) as LayerDrawable
+                        val gradientDrawable = layerDrawable.getDrawable(0) as GradientDrawable
+                        val middleColor = blendColors(dominantColor ?: ContextCompat.getColor(this@AlbumActivity, R.color.backgroundAlbum),
+                            ContextCompat.getColor(this@AlbumActivity, android.R.color.white),
+                            0.7F)
+                        gradientDrawable.colors = intArrayOf(
+                            dominantColor ?: ContextCompat.getColor(this@AlbumActivity, R.color.backgroundAlbum),
+                            middleColor,
+                            ContextCompat.getColor(this@AlbumActivity, android.R.color.white)
+                        )
+
+                        headerView.background = layerDrawable
                     }
                 }
 
                 override fun onLoadCleared(placeholder: Drawable?) {
+                    // Optionnel : gérer le cas où l'image est effacée
                 }
             })
     }
 
+    private fun blendColors(color1: Int, color2: Int, ratio: Float): Int {
+        val inverseRatio = 1 - ratio
+        val red = (Color.red(color1) * ratio + Color.red(color2) * inverseRatio).toInt()
+        val green = (Color.green(color1) * ratio + Color.green(color2) * inverseRatio).toInt()
+        val blue = (Color.blue(color1) * ratio + Color.blue(color2) * inverseRatio).toInt()
+        return Color.rgb(red, green, blue)
+    }
 
 
     private fun setAlbumInfo() {
