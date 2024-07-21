@@ -7,7 +7,6 @@ import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
-import android.transition.Transition
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
@@ -21,7 +20,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.palette.graphics.Palette
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
-import com.example.myapp.ArtistTile
+import ArtistTile
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.InputStreamReader

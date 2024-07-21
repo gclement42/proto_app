@@ -1,5 +1,6 @@
 package com.example.lunabee_proto
 
+import AlbumData
 import AlbumTileAdapter
 import ListAdapter
 import android.os.Bundle
@@ -29,6 +30,10 @@ class HomeActivity : BaseActivity() {
         }
         setupAvatarClick()
         setupCarousel()
+        displayListAlbums()
+    }
+
+    private fun displayListAlbums() {
         val listRecyclerView = findViewById<RecyclerView>(R.id.listRecyclerView)
         listRecyclerView.layoutManager = LinearLayoutManager(this)
         listRecyclerView.adapter = ListAdapter(getAlbums())

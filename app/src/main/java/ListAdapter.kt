@@ -6,7 +6,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lunabee_proto.AlbumActivity
-import com.example.lunabee_proto.AlbumData
 import com.example.lunabee_proto.R
 
 class ListAdapter(private val albums: List<AlbumData>):

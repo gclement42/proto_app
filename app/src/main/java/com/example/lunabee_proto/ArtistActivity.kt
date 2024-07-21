@@ -1,7 +1,7 @@
 package com.example.lunabee_proto
 
+import AlbumData
 import AlbumTileAdapter
-import ListAdapter
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -9,10 +9,8 @@ import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.carousel.CarouselSnapHelper
 import com.google.firebase.crashlytics.buildtools.reloc.com.google.common.reflect.TypeToken
@@ -32,6 +30,12 @@ class ArtistActivity : BaseActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        setupAvatarClick()
+        displayArtistData()
+
+    }
+
+    private fun displayArtistData() {
         val artistName = intent.getStringExtra("ARTIST_NAME")
         val artistImage = intent.getStringExtra("ARTIST_IMAGE")
         val artistFollowers = intent.getIntExtra("ARTIST_FOLLOWERS", -1)
@@ -39,7 +43,6 @@ class ArtistActivity : BaseActivity() {
         findViewById<TextView>(R.id.artist_followers).text = artistFollowers.toString() + " followers"
         val artistImageId = resources.getIdentifier(artistImage, "drawable", packageName)
         findViewById<ImageView>(R.id.artist_image).setImageResource(artistImageId)
-        setupAvatarClick()
         displayTopSongs(intent.getStringArrayListExtra("ARTIST_TOP_SONGS") ?: emptyList())
         setupCarousel()
     }
@@ -53,10 +56,17 @@ class ArtistActivity : BaseActivity() {
     private  fun setupCarousel() {
         carouselRecyclerView = findViewById(R.id.artist_releases)
         CarouselSnapHelper().attachToRecyclerView(carouselRecyclerView)
-        carouselRecyclerView.adapter = AlbumTileAdapter(getAlbums())
+        val artistName = intent.getStringExtra("ARTIST_NAME")
+        if (artistName != null)
+            carouselRecyclerView.adapter = AlbumTileAdapter(getArtistAlbums(artistName))
     }
 
-    private fun getAlbums(): List<AlbumData> {
+    private fun getArtistAlbums(artistName: String): List<AlbumData> {
+        val allAlbums = getAllAlbums()
+        return allAlbums.filter { it.artist == artistName }
+    }
+
+    private fun getAllAlbums(): List<AlbumData> {
         val inputStream = resources.openRawResource(R.raw.albums)
         val reader = InputStreamReader(inputStream)
         val albumType = object : TypeToken<List<AlbumData>>() {}.type

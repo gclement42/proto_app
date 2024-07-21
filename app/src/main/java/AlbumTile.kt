@@ -1,14 +1,9 @@
-package com.example.myapp
-
 import android.content.Context
 import android.content.Intent
 import android.util.AttributeSet
-import android.util.Log
 import android.widget.FrameLayout
-import androidx.cardview.widget.CardView
 import android.widget.ImageView
 import com.example.lunabee_proto.AlbumActivity
-import com.example.lunabee_proto.AlbumData
 import com.example.lunabee_proto.R
 
 class AlbumTile @JvmOverloads constructor(
@@ -26,7 +21,7 @@ class AlbumTile @JvmOverloads constructor(
         addView(imageView)
     }
 
-    fun setImageResource(filename: String) {
+    private fun setImageResource(filename: String) {
         imageView.setImageResource(context.resources.getIdentifier(filename, "drawable", context.packageName))
     }
 

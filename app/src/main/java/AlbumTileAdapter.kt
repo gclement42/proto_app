@@ -7,21 +7,13 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.lunabee_proto.AlbumActivity
-import com.example.lunabee_proto.AlbumData
 import com.example.lunabee_proto.R
 
 class AlbumTileAdapter(private val albums: List<AlbumData>):
     RecyclerView.Adapter<AlbumTileAdapter.CarouselViewHolder>() {
 
 
-    inner class CarouselViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val carouselImageView: AppCompatImageView =
-            view.findViewById(R.id.carouselImageView)
-
-        fun bind(imageResource: Int) {
-            carouselImageView.setImageResource(imageResource)
-        }
-    }
+    inner class CarouselViewHolder(view: View) : RecyclerView.ViewHolder(view) {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
             AlbumTileAdapter.CarouselViewHolder {

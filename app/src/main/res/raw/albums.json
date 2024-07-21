@@ -40,5 +40,12 @@
     "year": 2024,
     "cover": "green_montana_saudade",
     "tracklist": ["Track 1", "Track 2", "Track 3", "Track 4", "Track 5"]
+  },
+  {
+    "title": "Omar Chappier",
+    "artist": "Mairo",
+    "year": 2023,
+    "cover": "mairo_omar_chappier",
+    "tracklist": ["Track 1", "Track 2", "Track 3", "Track 4", "Track 5"]
   }
 ]
