@@ -107,7 +107,7 @@
             android:textColor="#000000"
             android:textSize="25sp" />
 
-        <com.example.myapp.AlbumTile
+        <com.example.lunabee_proto.AlbumTile
             android:id="@+id/album_tile_2"
             android:layout_width="88dp"
             android:layout_height="88dp"
@@ -118,7 +118,7 @@
             android:layout_marginEnd="0dp"
             android:layout_toStartOf="@id/album_tile_1" />
 
-        <com.example.myapp.AlbumTile
+        <com.example.lunabee_proto.AlbumTile
             android:id="@+id/album_tile_1"
             android:layout_width="110dp"
             android:layout_height="110dp"
@@ -127,7 +127,7 @@
             android:layout_marginStart="25dp"
             android:layout_marginTop="25dp" />
 
-        <com.example.myapp.AlbumTile
+        <com.example.lunabee_proto.AlbumTile
             android:id="@+id/album_tile_3"
             android:layout_width="88dp"
             android:layout_height="88dp"
@@ -156,7 +156,7 @@
             android:textColor="#000000"
             android:textSize="25sp" />
 
-        <com.example.myapp.ArtistTile
+        <com.example.lunabee_proto.ArtistTile
             android:id="@+id/artist_tile_2"
             android:layout_width="88dp"
             android:layout_height="88dp"
@@ -168,7 +168,7 @@
             android:layout_toStartOf="@id/artist_tile_1"
             />
 
-        <com.example.myapp.ArtistTile
+        <com.example.lunabee_proto.ArtistTile
             android:id="@+id/artist_tile_1"
             android:layout_width="110dp"
             android:layout_height="110dp"
@@ -180,7 +180,7 @@
             android:layout_marginEnd="0dp"
             />
 
-        <com.example.myapp.ArtistTile
+        <com.example.lunabee_proto.ArtistTile
             android:id="@+id/artist_tile_3"
             android:layout_width="88dp"
             android:layout_height="88dp"

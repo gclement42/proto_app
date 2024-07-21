@@ -1,3 +1,6 @@
+package com.example.lunabee_proto
+
+import AlbumData
 import android.content.Context
 import android.content.Intent
 import android.util.AttributeSet
