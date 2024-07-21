@@ -51,5 +51,7 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.glide)
     annotationProcessor(libs.compiler)
+    implementation(libs.androidx.palette)
+
 
 }

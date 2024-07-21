@@ -33,8 +33,6 @@ class ArtistTile @JvmOverloads constructor(
 
     fun setData(artist: ArtistData) {
         try {
-            nameTextView.text = artist.name
-            followersTextView.text = artist.followers.toString()
             val resId = context.resources.getIdentifier(artist.image, "drawable", context.packageName)
             if (resId != 0) {
                 imageView.setImageResource(resId)
