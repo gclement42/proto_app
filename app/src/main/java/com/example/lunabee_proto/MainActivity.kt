@@ -20,17 +20,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun authenticateUser() {
-        val usernameEditText: TextView = findViewById(R.id.edit_text_username)
-        val passwordEditText: TextView = findViewById(R.id.edit_text_password)
-        val username = usernameEditText.text.toString()
-        val password = passwordEditText.text.toString()
-        if (username.isEmpty() or password.isEmpty()) {
-            Log.d("MainActivity", "Username or password is empty")
-        }
-        else {
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
-        }
-
+        val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
     }
 }
