@@ -24,7 +24,6 @@ class ProfileActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
         val favoriteArtists = getFavoriteArtists()
         setFavoriteAlbums(getFavoriteAlbums())
         setFavoriteArtists(favoriteArtists)
@@ -71,10 +70,9 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun getFavoriteAlbums(): List<AlbumData> {
-        return listOf(
-            AlbumData("24", "La Feve", 2023, "lafeve_24", listOf("Track 1", "Track 2", "Track 3")),
-            AlbumData("Malcolm", "Zed", 2024, "zed_malcolm", listOf("Track 1", "Track 2", "Track 3")),
-            AlbumData("E-trap", "TH", 2024, "th_etrap", listOf("Track 1", "Track 2", "Track 3"))
-        )
+        val inputStream = resources.openRawResource(R.raw.albums)
+        val reader = InputStreamReader(inputStream)
+        val albumType = object : com.google.firebase.crashlytics.buildtools.reloc.com.google.common.reflect.TypeToken<List<AlbumData>>() {}.type
+        return Gson().fromJson(reader, albumType)
     }
 }
